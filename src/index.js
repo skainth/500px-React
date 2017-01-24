@@ -11,11 +11,17 @@ import reducer        from './reducer';
  
 import action         from './action';
 
-const initialState =  {
+/*const initialState =  {
                         popularItems: {title: "Popular", content: [{id: 1, name: "SKI", description: "Sukhjinder"}, {id: 2, name: "AMR", description: "Amar"}]},
                         loggedIn: false,
                         myLikes: {title: "My Likes", content: []}
-                      };
+                      };*/
+
+const initialState =  {
+  popularItems: {title: "", content: []},
+  loggedIn: false,
+  myLikes: {title: "My Likes", content: []}
+};
 
 const store = createStore(reducer, initialState, applyMiddleware(thunk));
 
