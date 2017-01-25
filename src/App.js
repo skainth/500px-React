@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
+
 import logo from './logo.svg';
 import './App.css';
 import Header from './Header';
 import Table from './components/Table';
-
 import action from './action';
-
-import {connect} from 'react-redux';
 
 class App extends Component {
   render() {
@@ -14,6 +13,8 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-header">
+          <span className="five">5</span>
+          <img src={logo} className="App-logo" alt="logo" />
           <img src={logo} className="App-logo" alt="logo" />
           <h2>Welcome to React</h2>
         </div>

@@ -1,6 +1,7 @@
 import React          from 'react';
 import ReactDOM       from 'react-dom';
 import App            from './App';
+import PhotoDetails   from './components/PhotoDetails';
 import './index.css';
 
 import {Provider}     from 'react-redux';
@@ -51,8 +52,7 @@ request({
 });
 */
 
-
-
+import {Route, Router, hashHistory} from 'react-router';
 
 
 const initialState =  {
@@ -67,7 +67,10 @@ store.dispatch(action.getInitialState());
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <Router history={hashHistory}>
+      <Route path="/" component={App}></Route>
+      <Route path="/photo/:photoId" component={PhotoDetails}/>
+    </Router>
   </Provider>,
   document.getElementById('root')
 );

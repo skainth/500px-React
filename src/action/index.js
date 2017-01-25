@@ -24,6 +24,20 @@ const action = {
   },
   logout: function(){
     return {type: actionType.LOGGED_OUT};
+  },
+  getPhoto: function(photoId){
+    return (dispatch) => {
+      axios.get(_500px.url + "/" + photoId,{
+          params: {
+            consumer_key: _500px.CONSUMER_KEY,
+            image_size: 6,
+            rpp: 5,
+            exclude: "nude"
+          }
+        }).then((response) => {
+          dispatch({type: "GOT_PHOTO", item: response});
+        });
+    }
   }
 };
 export default action;
