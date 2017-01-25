@@ -1,14 +1,12 @@
 import axios from 'axios';
-const URL = "https://api.500px.com/v1/photos";
-const CONSUMER_KEY = "NwBVrh4ZH9vaIxpy2pOuVs1mVgR4t3OONitVqCF5";
-// const SDK_KEY = "2e4b9c5250a65b560d53e24a900249082eb2d8b1";
+import {actionType, _500px} from '../constant';
 
 const action = {
   getInitialState: function(){
     return (dispatch) => {
-        axios.get(URL,{
+        axios.get(_500px.url,{
           params: {
-            consumer_key: CONSUMER_KEY,
+            consumer_key: _500px.CONSUMER_KEY,
             image_size: 6,
             rpp: 5,
             exclude: "nude"
@@ -20,6 +18,12 @@ const action = {
   },
   gotInitialState: function(items){
     return {type: "GOT_ITEMS", items}
+  },
+  login: function(data){
+    return {type: actionType.LOGGED_IN, data};
+  },
+  logout: function(){
+    return {type: actionType.LOGGED_OUT};
   }
 };
 export default action;

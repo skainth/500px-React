@@ -1,9 +1,11 @@
-import actionType from '../constant';
+import {actionType} from '../constant';
 
 function userDetails(state = {}, action){
   switch(action.type){
     case actionType.LOGGED_IN:
-      return state;
+      return action.data;
+    case actionType.LOGGED_OUT:
+      return false;  
     default:
       return state; 
   }
