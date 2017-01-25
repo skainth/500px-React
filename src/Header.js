@@ -2,7 +2,8 @@ import React from 'react';
 
 class Header extends React.Component{
   render(){
-    return <div><button>Popular</button></div>;
+    const {userDetails} = this.props;
+    return <div>{userDetails?<button>Logout {userDetails.name}</button>: <button>Login</button>}</div>;
   }
 }
 

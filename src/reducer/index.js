@@ -1,6 +1,6 @@
 import actionType from '../constant';
 
-function login(state = {}, action){
+function userDetails(state = {}, action){
   switch(action.type){
     case actionType.LOGGED_IN:
       return state;
@@ -37,7 +37,8 @@ export default function(state = {userDetails: {}, popularItems: {}, myLikes: {}}
   // Important point here is that we are passing a part of
   // the state to the reducers. In turn they give back that
   // part of the state only.
-  return  {   login: login(state.userDetails, action),
+
+  return  {   userDetails: userDetails(state.userDetails, action),
               popularItems: popularItems(state.popularItems, action) 
           }
 }

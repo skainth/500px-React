@@ -13,7 +13,7 @@ import action         from './action';
 
 const initialState =  {
   popularItems: {title: "", content: []},
-  loggedIn: false,
+  userDetails: {id: "3425", name: "Ski"},
   myLikes: {title: "My Likes", content: []}
 };
 
