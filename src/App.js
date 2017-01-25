@@ -3,15 +3,10 @@ import logo from './logo.svg';
 import './App.css';
 import Header from './Header';
 import Table from './components/Table';
-import action from './action';
 
 import {connect} from 'react-redux';
 
 class App extends Component {
-  componentDidMount(){
-    console.log("Component mounted");
-    // this.props.dispatch(action.getInitialState());
-  }
   render() {
     const {popularItems} = this.props;
     return (
