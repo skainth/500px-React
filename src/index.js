@@ -1,16 +1,20 @@
 import React          from 'react';
 import ReactDOM       from 'react-dom';
-import App            from './App';
-import PhotoDetails   from './components/PhotoDetails';
-import './index.css';
 
 import {Provider}     from 'react-redux';
 import {createStore, applyMiddleware}  from 'redux';
-
 import thunk          from 'redux-thunk'; 
-import reducer        from './reducer';
- 
+
+import reducer        from './reducer'; 
 import action         from './action';
+
+import {Route, Router, hashHistory, IndexRoute} from 'react-router';
+
+import './index.css';
+
+import Home           from './components/Home';
+import Popular        from './Popular';
+import PhotoDetails   from './components/PhotoDetails';
 
 /*
 var request = require('request');
@@ -52,8 +56,6 @@ request({
 });
 */
 
-import {Route, Router, hashHistory} from 'react-router';
-
 
 const initialState =  {
   popularItems: {title: "", content: []},
@@ -65,11 +67,16 @@ const store = createStore(reducer, initialState, applyMiddleware(thunk));
 
 store.dispatch(action.getInitialState());
 
+import Application from './components/Application';
+
 ReactDOM.render(
   <Provider store={store}>
     <Router history={hashHistory}>
-      <Route path="/" component={App}></Route>
-      <Route path="/photo/:photoId" component={PhotoDetails}/>
+      <Route path="/" component={Application}>
+        <IndexRoute component={Home}/>
+        <Route path="/popular" component={Popular} />
+        <Route path="/photo/:photoId" component={PhotoDetails}/>
+      </Route>
     </Router>
   </Provider>,
   document.getElementById('root')

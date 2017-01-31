@@ -17,7 +17,15 @@ class PhotoDetails extends React.Component{
   }
   render(){
     const {image} = this.state;
-    return <div>{Object.keys(image).length > 0?<img title={image.name} alt={image.name} src={image.image_url} /> : 'Image with id ' + this.props.params.photoId + ' not found'}</div>
+    return (
+      <div className="photoDetails">
+        {Object.keys(image).length > 0?
+          <div>
+            <img title={image.name} alt={image.name} src={image.image_url} /> 
+            {image.name}
+          </div>: 
+          'Image with id ' + this.props.params.photoId + ' not found'}</div>
+      );
   }
 }
 export default PhotoDetails;

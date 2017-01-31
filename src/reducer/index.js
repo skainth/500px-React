@@ -17,7 +17,7 @@ function popularItems(state = {title: "", content: []}, action){
       return state;
     }
     case "GOT_ITEMS":{
-      const newState = {title:"POPULAR", content: action.items};
+      const newState = {title:"Popular on 500px", content: action.items};
       return newState;
     }
     default: {
