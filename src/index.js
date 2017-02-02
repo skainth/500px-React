@@ -59,7 +59,7 @@ request({
 
 const initialState =  {
   popularItems: {title: "", content: []},
-  userDetails: {id: "3425", name: "Ski"},
+  userDetails: {},
   myLikes: {title: "My Likes", content: []}
 };
 
@@ -68,6 +68,7 @@ const store = createStore(reducer, initialState, applyMiddleware(thunk));
 store.dispatch(action.getInitialState());
 
 import Application from './components/Application';
+import Callback from './components/Callback';
 
 ReactDOM.render(
   <Provider store={store}>
@@ -77,6 +78,7 @@ ReactDOM.render(
         <Route path="/popular" component={Popular} />
         <Route path="/photo/:photoId" component={PhotoDetails}/>
       </Route>
+      <Route path="callback.html" component={Callback} />
     </Router>
   </Provider>,
   document.getElementById('root')
