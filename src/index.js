@@ -8,7 +8,7 @@ import thunk          from 'redux-thunk';
 import reducer        from './reducer'; 
 import action         from './action';
 
-import {Route, Router, hashHistory, IndexRoute} from 'react-router';
+import {Route, Router, browserHistory, IndexRoute} from 'react-router';
 
 import './index.css';
 
@@ -71,7 +71,7 @@ import Application from './components/Application';
 
 ReactDOM.render(
   <Provider store={store}>
-    <Router history={hashHistory}>
+    <Router history={browserHistory}>
       <Route path="/" component={Application}>
         <IndexRoute component={Home}/>
         <Route path="/popular" component={Popular} />
