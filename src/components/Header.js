@@ -7,6 +7,7 @@ import '../App.css';
 class Header extends React.Component{
   render(){
     const {userDetails, onLogoutClick, onLoginClick} = this.props;
+    console.log("userDetails", userDetails)
     return (
       <div>
         <div className="App-header">
@@ -16,7 +17,7 @@ class Header extends React.Component{
           <Link to="/" className="menuItem">Home</Link>
           <Link to="/popular" className="menuItem">Popular</Link>
           {userDetails?
-            <a href="#" className="menuItem" onClick={onLogoutClick}>Logout {userDetails.name}</a>: 
+            <a href="#" className="menuItem" onClick={onLogoutClick} title={"logout " + userDetails.name}>Logout</a>: 
             <a href="#" className="menuItem" onClick={onLoginClick}>Login</a>}
         </div>
       </div>

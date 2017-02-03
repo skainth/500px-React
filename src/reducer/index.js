@@ -1,6 +1,6 @@
 import {actionType} from '../constant';
 
-function userDetails(state = {}, action){
+function userDetails(state = false, action){
   switch(action.type){
     case actionType.LOGGED_IN:
       return action.data;
@@ -12,11 +12,11 @@ function userDetails(state = {}, action){
 }
 function popularItems(state = {title: "", content: []}, action){
   switch(action.type){
-    case "GET_ITEMS":{
+    case actionType.GET_ITEMS:{
       console.log("Gettig items");
       return state;
     }
-    case "GOT_ITEMS":{
+    case actionType.GOT_ITEMS:{
       const newState = {title:"Popular on 500px", content: action.items};
       return newState;
     }

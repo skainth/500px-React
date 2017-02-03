@@ -1,4 +1,4 @@
-export const actionType = {LOGGED_IN: "LOGGED_IN", LOGGED_OUT: "LOGGED_OUT", GOT_ITEMS: "GOT_ITEMS"};
+export const actionType = {LOGGED_IN: "LOGGED_IN", LOGGED_OUT: "LOGGED_OUT", GET_ITEMS: "GET_ITEMS", GOT_ITEMS: "GOT_ITEMS"};
 export const _500px = {
 url: "https://api.500px.com/v1/photos", 
 CONSUMER_KEY: "NwBVrh4ZH9vaIxpy2pOuVs1mVgR4t3OONitVqCF5", 

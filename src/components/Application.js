@@ -14,7 +14,7 @@ class Application extends React.Component{
       sdk_key: _500pxConfig.SDK_KEY
     });
     _500px.on('authorization_obtained', function () {
-      // alert('You have logged in');
+      console.log("500px authorization_obtained")
     });
   }
   render(){
