@@ -42,4 +42,3 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('root')
 );
-console.log("Pending\nSearch]\nRename popular\styling\server side rendering");
