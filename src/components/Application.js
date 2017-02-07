@@ -9,12 +9,23 @@ import {_500px as _500pxConfig}   from '../constant';
 /* global _500px */
 
 class Application extends React.Component{
+  refreshToken(){
+    const self = this;
+    _500px.api('/users', (response) => {
+      const user = response.data.user;
+      self.props.dispatch(action.login({id:user.id, name: user.username}));
+    });
+  }
   componentDidMount(){    
     _500px.init({
       sdk_key: _500pxConfig.SDK_KEY
     });
-    _500px.on('authorization_obtained', function () {
-      console.log("500px authorization_obtained")
+    /*_500px.on('authorization_obtained', function () {
+      console.log("500px authorization_obtained", arguments)
+    });*/
+    _500px.getAuthorizationStatus( (status) => {
+     if(status === "authorized")
+      this.refreshToken();
     });
   }
   render(){
@@ -28,17 +39,9 @@ class Application extends React.Component{
             this.props.dispatch(action.logout())}
           }
           onLoginClick={(e) => {
-            const self = this;
             e.preventDefault();
-            // this.props.dispatch(action.login({id: "3425", name: "Ski"}))
-            _500px.ensureAuthorization(function () {
-              _500px.api('/users', function (response) {
-                  const user = response.data.user;
-                  self.props.dispatch(action.login({id:user.id, name: user.username}))
-              });
-            });
+            _500px.ensureAuthorization(this.refreshToken);
           }}
-
         />
         {this.props.children}
       </div>

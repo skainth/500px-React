@@ -34,6 +34,7 @@ ReactDOM.render(
       <Route path="/" component={Application}>
         <IndexRoute component={Home}/>
         <Route path="/popular" component={Popular} />
+        <Route path="/favorites" component={Popular} />
         <Route path="/photo/:photoId" component={PhotoDetails}/>
       </Route>
       <Route path="callback.html" component={Callback} />
@@ -41,3 +42,4 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('root')
 );
+console.log("Pending\nSearch]\nRename popular\styling\server side rendering");

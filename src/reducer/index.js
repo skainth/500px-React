@@ -6,6 +6,9 @@ function userDetails(state = false, action){
       return action.data;
     case actionType.LOGGED_OUT:
       return false;  
+    case actionType.GOT_FAVS:{
+      return Object.assign({}, state, {favs: action.data})
+    }
     default:
       return state; 
   }
