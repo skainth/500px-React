@@ -5,7 +5,6 @@ Demo application to use 500px API with React.
 <div>Pending items</div>
 <ul>
 	<li>Search</li>
-	<li>Rename popular</li>
 	<li>Styling</li>
 	<li>Server Side Rendering</li>
 	<li>Logout</li>
