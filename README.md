@@ -2,8 +2,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 Demo application to use 500px API with React.
 
+<div>Pending items</div>
 <ul>
-	<li>Pending items</li>
 	<li>Search</li>
 	<li>Rename popular</li>
 	<li>Styling</li>

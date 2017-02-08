@@ -16,19 +16,24 @@ class Application extends React.Component{
       self.props.dispatch(action.login({id:user.id, name: user.username}));
     });
   }
-  componentDidMount(){    
+  componentDidMount(){  
+  const self = this;  
     _500px.init({
       sdk_key: _500pxConfig.SDK_KEY
     });
-    /*_500px.on('authorization_obtained', function () {
+    _500px.on('authorization_obtained', function () {
       console.log("500px authorization_obtained", arguments)
-    });*/
+    });
+    _500px.on('logout', function () {
+      console.log("logout", arguments)
+    });
     _500px.getAuthorizationStatus( (status) => {
      if(status === "authorized")
-      this.refreshToken();
+      self.refreshToken();
     });
   }
   render(){
+    const self = this;
     const {userDetails} = this.props;
     return (
       <div className="App">
@@ -36,11 +41,12 @@ class Application extends React.Component{
           userDetails={userDetails}
           onLogoutClick={(e) => {
             e.preventDefault();
+            _500px.logout();
             this.props.dispatch(action.logout())}
           }
           onLoginClick={(e) => {
             e.preventDefault();
-            _500px.ensureAuthorization(this.refreshToken);
+            _500px.ensureAuthorization(self.refreshToken.bind(self));
           }}
         />
         {this.props.children}
