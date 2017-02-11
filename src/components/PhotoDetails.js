@@ -17,14 +17,17 @@ class PhotoDetails extends React.Component{
   }
   render(){
     const {image} = this.state;
+    const imageFound = Object.keys(image).length > 0;
+    const authorName = imageFound? image.user.firstname + image.user.lastname : '';
+    const imageTitle = imageFound? image.name + ' by ' + authorName : ''; 
     return (
       <div className="photoDetails">
-        {Object.keys(image).length > 0?
+        {imageFound?
           <div>
-            <img title={image.name} alt={image.name} src={image.image_url} /> 
-            {image.name}
-          </div>: 
-          'Image with id ' + this.props.params.photoId + ' not found'}</div>
+            <img title={imageTitle} alt={image.name} src={image.image_url} /> 
+            {imageTitle}
+          </div>
+          :'Image with id ' + this.props.params.photoId + ' not found'}</div>
       );
   }
 }

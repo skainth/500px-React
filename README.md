@@ -11,4 +11,5 @@ Demo application to use 500px API with React.
 	<li>Show author name on details</li>
 	<li>More by author</li>
 	<li>Spinner</li>
+	<li>Cache images via service worker</li>
 </ul>
