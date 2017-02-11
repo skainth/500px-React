@@ -9,7 +9,7 @@ class PhotoDetails extends React.Component{
   }
   componentDidMount(){
     const {photoId} = this.props.params;
-    api.getPhoto(photoId, (response) => {
+    api.getPhotoDetails(photoId, (response) => {
       if(response && response.data.photo){
         this.setState({image: response.data.photo});
       }

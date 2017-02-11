@@ -4,7 +4,7 @@ import api from '../data';
 const action = {
   getInitialState: function(){
     return (dispatch) => {
-        api.getEditorsChoice((response) => {
+        api.getPopular((response) => {
           dispatch({type: actionType.GOT_ITEMS, items: response.data.photos});
         });
       }
@@ -13,7 +13,6 @@ const action = {
       api.getGalleryPhotos(userId, gallery.id, (response) => {
         dispatch({type: actionType.GOT_FAVS, data: response.data});
       });
-    
   },
   gotInitialState: function(items){
     return {type: actionType.GOT_ITEMS, items}

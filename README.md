@@ -7,6 +7,8 @@ Demo application to use 500px API with React.
 	<li>Search</li>
 	<li>Styling</li>
 	<li>Server Side Rendering</li>
-	<li>Logout</li>
-	<li>On logout redirect to popular</li>
+	<li>Like/Unlike</li>
+	<li>Show author name on details</li>
+	<li>More by author</li>
+	<li>Spinner</li>
 </ul>

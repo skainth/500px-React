@@ -39,7 +39,7 @@ ReactDOM.render(
         <Route path="/popular" component={Popular} />
         <Route path="/favorites" component={Favorites} />
         <Route path="/photo/:photoId" component={PhotoDetails}/>
-        <Route path="*" component={NotFound} />
+        
       </Route>
       <Route path="callback.html" component={Callback} />
     </Router>
