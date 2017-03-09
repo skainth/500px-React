@@ -16,11 +16,14 @@ class Table extends React.Component{
   }
   render(){
     const {heading, content} = this.props;
-    return (
+    return ( 
       <div>
         <strong><div style={tableHeadingStyle}>{heading}</div></strong>
-        <div>{content && content.map(this.renderRow)}</div>
-      </div>);
+        <div>
+          {content.map(this.renderRow)}
+        </div>
+      </div>
+      );
   }
 }
 

@@ -20,7 +20,8 @@ import Popular        from './Popular';
 import PhotoDetails   from './components/PhotoDetails';
 
 const initialState =  {
-  popularItems: {title: "", content: []},
+  photos: {},
+  popularItems: [],
   myLikes: {title: "My Likes", content: []}
 };
 

@@ -4,7 +4,7 @@ import action from '../action';
 
 import {connect} from 'react-redux';
 
-import {_500px as _500pxConfig}   from '../constant';
+import {_500pxConfig as _500pxConfig}   from '../constant';
 
 /* global _500px */
 
@@ -21,9 +21,9 @@ class Application extends React.Component{
     _500px.init({
       sdk_key: _500pxConfig.SDK_KEY
     });
-    // _500px.on('authorization_obtained', function () {
-    //   console.log("500px authorization_obtained", arguments)
-    // });
+    _500px.on('authorization_obtained', function () {
+      // console.log("500px authorization_obtained", arguments)
+    });
     _500px.on('logout', function () {
       console.log("logout", arguments)
     });

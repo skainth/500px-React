@@ -1,5 +1,5 @@
 import {actionType} from '../constant';
-import api from '../data';
+import api          from '../data';
 
 const action = {
   getInitialState: function(){
@@ -16,6 +16,16 @@ const action = {
   },
   gotInitialState: function(items){
     return {type: actionType.GOT_ITEMS, items}
+  },
+  lovePhoto: (id, loved, userId, galleryId) => {
+    return (dispatch) => {
+      api.lovePhoto(id, loved,(response) => {
+        if(response.loved)
+          dispatch({type: actionType.LOVE_PHOTO, data: response.data});
+        else
+          dispatch({type: actionType.UNLOVE_PHOTO, data: response.data});
+      }, userId, galleryId);
+    }
   },
   login: function(data){
     const self = this;
