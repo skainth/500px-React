@@ -2,6 +2,9 @@ import React          from 'react';
 import {connect}      from 'react-redux';
 import api            from '../data';
 import action         from '../action';
+import RaisedButton   from 'material-ui/RaisedButton';
+import IconButton from 'material-ui/IconButton';
+import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 
 import {_500pxConfig} from '../constant';
 
@@ -71,14 +74,31 @@ class PhotoDetails extends React.Component{
     const authorName = imageFound? imageFound.user.firstname + ' ' + imageFound.user.lastname : '';
     const imageTitle = imageFound? imageFound.name + ' by ' + authorName : ''; 
     
+    // console.log("render favs", image? image.userpic_url: 'not loaded');
     return (
       <div className="photoDetails">
         {imageFound?
           <div>
-            <img title={imageTitle} alt={image.name} src={image.image_url}/> 
-            {imageTitle}
-            <button onClick={this.lovePhoto}>{isLoved?'Vote -1': 'Vote +1'}</button>
-
+            <Card>
+              <CardHeader 
+                title={authorName}
+                avatar={image.user.userpic_url}
+              />
+              <CardMedia
+                overlay={<CardTitle title={imageTitle} />}
+              >
+                <img src={image.image_url} />
+              </CardMedia>
+              <CardActions>
+                <RaisedButton 
+                  label={isLoved?'Unlove': 'Love'} 
+                  primary={true}
+                  onClick={this.lovePhoto}
+                />
+                <IconButton iconClassName="muidocs-icon-custom-github" />
+    <IconButton iconClassName="muidocs-icon-custom-github" disabled={true} />
+              </CardActions>
+            </Card>
           </div>
           :'Image with id ' + this.props.params.photoId + ' not found'}</div>
       );

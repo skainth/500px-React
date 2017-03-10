@@ -1,8 +1,14 @@
-import React from 'react';
-import Header from './Header';
-import action from '../action';
+import React                from 'react';
+import Header               from './Header';
+import action               from '../action';
+import MuiThemeProvider     from 'material-ui/styles/MuiThemeProvider';
+import injectTapEventPlugin from 'react-tap-event-plugin';
+ 
+// Needed for onTouchTap 
+// http://stackoverflow.com/a/34015469/988941 
+injectTapEventPlugin();
 
-import {connect} from 'react-redux';
+import {connect}            from 'react-redux';
 
 import {_500pxConfig as _500pxConfig}   from '../constant';
 
@@ -36,21 +42,23 @@ class Application extends React.Component{
     const self = this;
     const {userDetails} = this.props;
     return (
-      <div className="App">
-        <Header  
-          userDetails={userDetails}
-          onLogoutClick={(e) => {
-            e.preventDefault();
-            _500px.logout();
-            this.props.dispatch(action.logout())}
-          }
-          onLoginClick={(e) => {
-            e.preventDefault();
-            _500px.ensureAuthorization(self.refreshToken.bind(self));
-          }}
-        />
-        {this.props.children}
-      </div>
+      <MuiThemeProvider>
+        <div className="App">
+          <Header  
+            userDetails={userDetails}
+            onLogoutClick={(e) => {
+              e.preventDefault();
+              _500px.logout();
+              this.props.dispatch(action.logout())}
+            }
+            onLoginClick={(e) => {
+              e.preventDefault();
+              _500px.ensureAuthorization(self.refreshToken.bind(self));
+            }}
+          />
+          {this.props.children}
+        </div>
+      </MuiThemeProvider>
     );
   }
 }

@@ -34,7 +34,7 @@ const action = {
         if(response)
           data.galleries = response.data.galleries;
         dispatch({type: actionType.LOGGED_IN, data});
-        if(data.galleries.length > 0){
+        if(data.galleries && data.galleries.length > 0){
           self.getFavs(data.id, data.galleries[0], dispatch);
         }
       });
