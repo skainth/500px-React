@@ -1,4 +1,4 @@
-var _500pxConfig = require('./config/500px.config.js');
+var _500pxConfig = require('./500px.config.js');
 module.exports = {
   server: {
     protocol: 'http',

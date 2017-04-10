@@ -1,0 +1,2 @@
+module.exports = { CONSUMER_KEY: "NwBVrh4ZH9vaIxpy2pOuVs1mVgR4t3OONitVqCF5",
+  CONSUMER_SECRET: "Js0R6ZpNUOamv9DCrlvwm3oMNPhk65PKN0sVfTwb"};
