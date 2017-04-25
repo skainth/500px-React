@@ -33,7 +33,7 @@ class Application extends React.Component{
     const self = this;
     axios.get('/user').then(response => {
       if(response.data.error){
-        alert('Please login again.');
+        alert('Please login.');
         return;
       }
       const {id, username} = response.data.user;
