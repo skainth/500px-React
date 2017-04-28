@@ -49,7 +49,11 @@ app.post('/love', (req, res) =>{
     res.json(resp);
   });
 });
-
+app.get('/logout', (req, res) => {
+  req.session.destroy(() => {
+    res.redirect('/');
+  })
+});
 var compiler = webpack(webpackConfig);
 
 app.use(require('webpack-dev-middleware')(compiler, {

@@ -15,6 +15,9 @@ class LoveContainer extends React.Component{
   }
   lovePhoto(){
     const {imageId, isLoved, userDetails} =  this.props;
+    if(!userDetails){
+      alert('Please login to love items');
+    }
     const galleryId = userDetails.galleries[0].id;
     this.props.dispatch(action.lovePhoto(imageId, isLoved, userDetails.id, galleryId));
   }

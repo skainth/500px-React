@@ -15,7 +15,6 @@ class Favorites extends React.Component{
       if(userDetails.favs && userDetails.favs.length){
         const favs = [];
         idsToArray(userDetails.favs, photos, favs);
-        console.log("favs", favs);
         return <Table heading={"Your favorites"} content={favs}/>;
       }else{
         return (<div>You have no favorites</div>);

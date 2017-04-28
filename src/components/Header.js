@@ -9,7 +9,7 @@ class Header extends React.Component{
     return (
       <span>
         <Link to="/favorites">Favorites</Link>
-        <a href="#" className="menuItem" onClick={onLogoutClick} title={"logout " + userDetails.name}>Logout</a>
+        <a href="/logout" className="menuItem" title={"logout " + userDetails.name}>Logout</a>
       </span>);
   }
   render(){
