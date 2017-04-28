@@ -4,10 +4,7 @@ import api            from '../data';
 import action         from '../action';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 
-import IconButton from 'material-ui/IconButton';
-import Favorite from 'material-ui/svg-icons/action/favorite';
-import Favorite_Border from 'material-ui/svg-icons/action/favorite-border';
-import {red500, grey400} from 'material-ui/styles/colors';
+import LoveContainer  from  './LoveContainer';
 
 import {_500pxConfig} from '../constant';
 
@@ -75,6 +72,7 @@ class PhotoDetails extends React.Component{
     const photoId = Number(this.props.params.photoId);
     const imageFound = this.state.image;
     const {isLoved,image} = this.state;
+    const {userDetails} = this.props;
     const authorName = imageFound? imageFound.user.firstname + ' ' + imageFound.user.lastname : '';
     const imageTitle = imageFound? imageFound.name + ' by ' + authorName : '';
     return (
@@ -92,12 +90,7 @@ class PhotoDetails extends React.Component{
                 <img src={image.image_url} />
               </CardMedia>
               <CardActions>
-                <IconButton tooltip={isLoved? 'remove from favorites': 'add to favorites'} >{
-                  isLoved
-                    ? <Favorite onClick={this.lovePhoto} color={red500} /> 
-                    : <Favorite_Border onClick={this.lovePhoto} color={grey400} />
-                  }
-                </IconButton>
+                <LoveContainer isLoved={isLoved} imageId={image.id} userId={userDetails.id} galleryId={userDetails.galleries[0].id} />
               </CardActions>
               <CardText>
                 <div dangerouslySetInnerHTML={createMarkup(imageFound)} />
