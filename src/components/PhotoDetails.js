@@ -90,7 +90,7 @@ class PhotoDetails extends React.Component{
                 <img src={image.image_url} />
               </CardMedia>
               <CardActions>
-                <LoveContainer isLoved={isLoved} imageId={image.id} userId={userDetails.id} galleryId={userDetails.galleries[0].id} />
+                <LoveContainer isLoved={isLoved} imageId={image.id} />
               </CardActions>
               <CardText>
                 <div dangerouslySetInnerHTML={createMarkup(imageFound)} />

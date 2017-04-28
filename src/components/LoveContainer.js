@@ -14,8 +14,9 @@ class LoveContainer extends React.Component{
     this.lovePhoto = this.lovePhoto.bind(this);
   }
   lovePhoto(){
-    const {imageId, isLoved, userId, galleryId} =  this.props;
-    this.props.dispatch(action.lovePhoto(imageId, isLoved, userId, galleryId));
+    const {imageId, isLoved, userDetails} =  this.props;
+    const galleryId = userDetails.galleries[0].id;
+    this.props.dispatch(action.lovePhoto(imageId, isLoved, userDetails.id, galleryId));
   }
   render(){
     const {isLoved} = this.props;
@@ -34,4 +35,4 @@ class LoveContainer extends React.Component{
 function mapStateToProps(state){
   return {userDetails: state.userDetails};
 }
-export default connect()(LoveContainer);
+export default connect(mapStateToProps)(LoveContainer);
