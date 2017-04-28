@@ -1,66 +1,10 @@
->## A Big Update Is Coming
+An app to learn React with nodejs. In this app I'm acessing [500px's API](https://github.com/500px/api-documentation). [500px](500px.com) is a place where professional photographers share and sell their work.
 
->React Hot Loader 3 is [on the horizon](https://github.com/gaearon/react-hot-loader/pull/240), and you can try it today ([boilerplate branch](https://github.com/gaearon/react-hot-boilerplate/pull/61), [upgrade example](https://github.com/gaearon/redux-devtools/commit/64f58b7010a1b2a71ad16716eb37ac1031f93915)). It fixes some [long-standing issues](https://twitter.com/dan_abramov/status/722040946075045888) with both React Hot Loader and React Transform, and is intended as a replacement for both. The docs are not there yet, but they will be added before the final release. For now, [this commit](https://github.com/gaearon/redux-devtools/commit/64f58b7010a1b2a71ad16716eb37ac1031f93915) is a good reference.
+Some of the 500px's API require oauth authentication. I'm using the awesome [grant](https://github.com/simov/grant) express middleware to get oauth tokens. To create authenticated requests using the tokens obtained via grant, I'm using another nice library [purest](https://github.com/purestjs) by the same author [simov](https://simov.github.io/).
 
+I'm using the beautiful components [material-ui](http://www.material-ui.com/) to show photo lists and photo details.
 
-React Hot Boilerplate
-=====================
-
-The minimal dev environment to enable live-editing React components.
-
-### ⚠️⚠️⚠️ This Is Experimental and Incomplete! ⚠️⚠️⚠️
-
-This is **not a good starting point for people learning React.**  
-It’s experimental and completely lacks any production features.
-
-**Do not use this as an actual project boilerplate!**  
-If you’re just getting started with React, **use [Create React App](https://github.com/facebookincubator/create-react-app) instead.**
-
-### Usage
-
-```
-git clone https://github.com/gaearon/react-hot-boilerplate.git
-cd react-hot-boilerplate/
-npm install
-npm start
-open http://localhost:3000
-```
-
-Now edit `src/App.js`.  
-Your changes will appear without reloading the browser like in [this video](http://vimeo.com/100010922).
-
-### Linting
-
-This boilerplate project includes React-friendly ESLint configuration.
-
-```
-npm run lint
-```
-
-### Using `0.0.0.0` as Host
-
-You may want to change the host in `server.js` and `webpack.config.js` from `localhost` to `0.0.0.0` to allow access from same WiFi network. This is not enabled by default because it is reported to cause problems on Windows. This may also be useful if you're using a VM.
-
-### Missing Features
-
-This boilerplate is purposefully simple to show the minimal configuration for React Hot Loader. For a real project, you'll want to add a separate config for production with hot reloading disabled and minification enabled. You'll also want to add a router, styles and maybe combine dev server with an existing server. This is out of scope of this boilerplate, but you may want to look into [other starter kits](https://github.com/gaearon/react-hot-loader/blob/master/docs/README.md#starter-kits).
-
-### WebStorm
-
-Because the WebStorm IDE uses "safe writes" by default, Webpack's file-watcher won't recognize file changes, so hot-loading won't work. To fix this, disable "safe write" in WebStorm.
-
-### Dependencies
-
-* React
-* Webpack
-* [webpack-dev-server](https://github.com/webpack/webpack-dev-server)
-* [babel-loader](https://github.com/babel/babel-loader)
-* [react-hot-loader](https://github.com/gaearon/react-hot-loader)
-
-### Resources
-
-* [Demo video](http://vimeo.com/100010922)
-* [react-hot-loader on Github](https://github.com/gaearon/react-hot-loader)
-* [Integrating JSX live reload into your workflow](http://gaearon.github.io/react-hot-loader/getstarted/)
-* [Troubleshooting guide](https://github.com/gaearon/react-hot-loader/blob/master/docs/Troubleshooting.md)
-* Ping [@dan_abramov](https://twitter.com/dan_abramov) on Twitter or #reactjs (`chat.freenode.net/reactjs`) on IRC
+The app has following features
+* view popular images on 500px
+* login and view your favorited images on 500px
+* add images to your favorites list
