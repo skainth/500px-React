@@ -21,14 +21,13 @@ class LoveContainer extends React.Component{
   render(){
     const {isLoved} = this.props;
     return (
-    <div>
       <IconButton tooltip={isLoved? 'remove from favorites': 'add to favorites'} >{
         isLoved
           ? <Favorite onClick={this.lovePhoto} color={red500} /> 
           : <Favorite_Border onClick={this.lovePhoto} color={grey400} />
         }
       </IconButton>
-    </div>);
+    );
   }
 }
 

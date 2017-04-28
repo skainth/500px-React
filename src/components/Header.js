@@ -16,9 +16,9 @@ class Header extends React.Component{
     const {userDetails, onLogoutClick, onLoginClick} = this.props;
     return (
       <div>
-        <div className="App-header">
-          <img  className="App-logo" alt="logo" />
-        </div>
+        <h1 className="App-header">
+          500px + React
+        </h1>
         <div className="menu">
           <Link to="/" className="menuItem">Home</Link>
           <Link to="/popular" className="menuItem">Popular</Link>

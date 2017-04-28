@@ -1,7 +1,8 @@
 import React            from 'react';
 import {Link}           from 'react-router';
 import Subheader        from 'material-ui/Subheader';
-import {GridList, GridTile} from 'material-ui/GridList';
+import {GridList, GridTile, IconButton} from 'material-ui/GridList';
+import LoveContainer    from './LoveContainer';
 
 const styles = {
   root: {
@@ -11,7 +12,7 @@ const styles = {
   },
   gridList: {
     width: "100%",
-    height: "550",
+    height: "550px",
     overflowY: 'auto',
   },
   imageStyle:{
@@ -30,6 +31,7 @@ class Table extends React.Component{
         title={row.name}
         titlePosition="bottom"
         titleBackground="linear-gradient(to bottom, rgba(0,0,0,0.7) 0%,rgba(0,0,0,0.3) 70%,rgba(0,0,0,0) 100%)"
+        subtitle={<span>by <b>{row.user.fullname}</b></span>}
       >
         <Link to={"/photo/" + row.id}>
           <img src={row.image_url} title={row.name} alt={row.name} style={styles.imageStyle}/>
