@@ -2,9 +2,12 @@ import React          from 'react';
 import {connect}      from 'react-redux';
 import api            from '../data';
 import action         from '../action';
-import RaisedButton   from 'material-ui/RaisedButton';
-import IconButton from 'material-ui/IconButton';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
+
+import IconButton from 'material-ui/IconButton';
+import Favorite from 'material-ui/svg-icons/action/favorite';
+import Favorite_Border from 'material-ui/svg-icons/action/favorite-border';
+import {red500, grey400} from 'material-ui/styles/colors';
 
 import {_500pxConfig} from '../constant';
 
@@ -89,13 +92,12 @@ class PhotoDetails extends React.Component{
                 <img src={image.image_url} />
               </CardMedia>
               <CardActions>
-                <RaisedButton 
-                  label={isLoved?'Unlove': 'Love'} 
-                  primary={true}
-                  onClick={this.lovePhoto}
-                />
-                <IconButton iconClassName="muidocs-icon-custom-github" />
-                <IconButton iconClassName="muidocs-icon-custom-github" disabled={true} />
+                <IconButton tooltip={isLoved? 'remove from favorites': 'add to favorites'} >{
+                  isLoved
+                    ? <Favorite onClick={this.lovePhoto} color={red500} /> 
+                    : <Favorite_Border onClick={this.lovePhoto} color={grey400} />
+                  }
+                </IconButton>
               </CardActions>
               <CardText>
                 <div dangerouslySetInnerHTML={createMarkup(imageFound)} />
