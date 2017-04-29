@@ -11,56 +11,25 @@ import {_500pxConfig} from '../constant';
 class PhotoDetails extends React.Component{
   constructor(props){
     super(props);
-    this.state = {};
+    this.state = {imageFound: null};
     this.lovePhoto = this.lovePhoto.bind(this);
   }
   componentDidMount(){
-    this.isStateUpdateRequired(this.props);
-  }
-  componentWillReceiveProps(nextProps){
-    this.isStateUpdateRequired(nextProps)
-  }
-  isStateUpdateRequired(props){
-    const photoId = Number(this.props.params.photoId);
-    let isLoved = false;
-    const {photos} = props;
-    const imageFound = photos[photoId];
-    const {userDetails} = props;
-    if(imageFound){
-      if(userDetails && userDetails.favs && userDetails.favs.indexOf(photoId) != -1){
-        isLoved = true;
-      }
-      this.setState({image: imageFound, isLoved: isLoved});
-    }
+    this.loadPhoto();
   }
   loadPhoto(){
     let {photoId} = this.props.params;
     photoId = Number(photoId);        // Convert it to number
-    const {userDetails, photos} = this.props;
-    const self = this;
+    const {photos} = this.props;
 
     if(photos[photoId]){
-      let isLoved = false;
-      if(userDetails.favs && userDetails.favs.indexOf(photoId) > -1){
-        isLoved = true;
-      }
-      this.setState({image: photos[photoId], isLoved});
+      this.setState({image: photos[photoId]});
     }else{
-      console.log("TODO: Fetch photo in case it is not part of favs or popular");
-      return;
-      /*api.getPhotoDetails(photoId, (response) => {
+      api.getPhotoDetails(photoId, (response) => {
         if(response && response.data.photo){
-          let isLoved = false;
-          if(this.props.userDetails && this.props.userDetails.favs){
-            isLoved = this.props.userDetails.favs.photos.find((elem) => 
-                                                  {
-                    return elem.id == response.data.photo.id
-                                              });
-          }
-
-          this.setState({image: response.data.photo, isLoved});
+          this.setState({image: response.data.photo});
         }
-      }); */
+      });
     }
   }
   lovePhoto(){
@@ -69,10 +38,9 @@ class PhotoDetails extends React.Component{
     this.props.dispatch(action.lovePhoto(image.id, isLoved,userDetails.id, userDetails.galleries[0].id, userDetails.token));
   }
   render(){
-    const photoId = Number(this.props.params.photoId);
     const imageFound = this.state.image;
-    const {isLoved,image} = this.state;
-    const {userDetails} = this.props;
+    const {image} = this.state;
+
     const authorName = imageFound? imageFound.user.firstname + ' ' + imageFound.user.lastname : '';
     const imageTitle = imageFound? imageFound.name + ' by ' + authorName : '';
     return (
