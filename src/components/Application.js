@@ -36,8 +36,8 @@ class Application extends React.Component{
         alert('Please login to view your favorite items');
         return;
       }
-      const {id, username} = response.data.user;
-      self.props.dispatch(action.login({id, name: username}));
+      const {id, firstname, username} = response.data.user;
+      self.props.dispatch(action.login({id, name: firstname || username}));
     });
   }
   render(){
