@@ -1,19 +1,14 @@
-import axios    from 'axios';
-import request  from 'request';
-import Purest   from 'purest';
-const purest = Purest({request});
-import config   from '@purest/providers';
+import axios from 'axios';
 
 import {_500pxConfig as _500pxConfig} from '../constant';
 
 const api = {
-  getData: function(options, callback){
-    const params = {
+  getData: function(options, callback, parameters){
+    const params = Object.assign({
       consumer_key: _500pxConfig.CONSUMER_KEY,
       image_size: options.image_size || 6
-    }
-    if(options.numPhotos)
-        options.numPhotos;
+    }, parameters);
+
     if(options.method == 'post'){
       axios.post(_500pxConfig.baseURL + "/" + options.api,{
         params: params
@@ -36,8 +31,9 @@ const api = {
     this.getData({api: 'photos/' + photoId}, callback);
   },
   getPopular: function(callback){
-    const options = {api: 'photos'}
-    this.getData(options, callback);
+    const options = {api: 'photos'};
+    const params = {'only': 'landscapes,sport,food'};
+    this.getData(options, callback, params);
   },
   getGalleries: function(userid, callback){
     const options = {api: `users/${userid}/galleries`};
