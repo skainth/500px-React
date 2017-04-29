@@ -24,34 +24,19 @@ class LoveContainer extends React.Component{
     this.props.dispatch(action.lovePhoto(imageId, isLoved, userDetails.id, galleryId));
   }
   componentWillReceiveProps(nextProps){
-    // debugger;
-    console.log("componentWillReceiveProps", nextProps, this.props);
     this.isStateUpdateRequired(nextProps)
   }
-  /*shouldComponentUpdate(){
-    debugger;
-  }
-  componentWillUpdate(){
-    debugger;
-  }*/
   isStateUpdateRequired(props){
     const photoId = Number(this.props.imageId);
     let isLoved = false;
-    const {photos} = this.props;
-    if(!photos)
-      return;
-    const imageFound = photos[photoId];
     const {userDetails} = props;
-    if(imageFound){
-      if(userDetails && userDetails.favs && userDetails.favs.indexOf(photoId) != -1){
-        isLoved = true;
-      }
-      this.setState({isLoved});
+    if(userDetails && userDetails.favs && userDetails.favs.indexOf(photoId) != -1){
+      isLoved = true;
     }
+    this.setState({isLoved});
   }
   isImageLoved(photoId){
     let isLoved = false;
-
     const {photos} = this.props;
     if(!photos)
       return false;
@@ -65,8 +50,7 @@ class LoveContainer extends React.Component{
     return isLoved;
   }
   render(){
-    let isLoved = this.isImageLoved(this.props.imageId);
-
+    const isLoved = this.state.isLoved || this.isImageLoved(this.props.imageId);
     return (
       <IconButton tooltip={isLoved? 'remove from favorites': 'add to favorites'} tooltipPosition={'top-left'}>{
         isLoved
